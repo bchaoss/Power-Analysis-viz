@@ -7,7 +7,7 @@ A visualization of the relationships among the five elements in experimental pow
 
 It's important to determine the required power level and smaple size before running an A/B testing.
 
-Inspired by several excellent power analysis tools / sample size calculators, I generated this chart to show the trade-off relationships between the key metrics in power analysis and how we could increase statistical power:
+Inspired by several excellent power analysis tools / sample size calculators, I generated this small chart to show the trade-off relationships between the key metrics in power analysis and how we could increase statistical power:
 
 | How to | Visualization | Note |
 |--|--|--|
