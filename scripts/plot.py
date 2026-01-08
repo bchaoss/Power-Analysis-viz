@@ -18,7 +18,7 @@ def calculate_sample_size(alpha, beta, mu1, mu2, sigma, tail='two'):
     # sample size
     n = ((z_alpha + z_beta)**2 * (2 * sigma**2)) / (delta**2)
 
-    return math.ceil(n) # round up
+    return math.ceil(n)  # round up
 
 
 # 1. Parameter Settings
@@ -54,8 +54,10 @@ fig, ax = plt.subplots(figsize=(10, 6))
 plt.plot(x, y0, 'k-', lw=2, label='$H_0$')
 plt.plot(x, y1, 'k-', lw=2, label='$H_1$')
 
-plt.text(mu0, max(y1)*0.77, '$H_0$', fontsize=14, ha='center', fontweight='bold')
-plt.text(mu1, max(y1)*0.77, '$H_1$', fontsize=14, ha='center', fontweight='bold')
+plt.text(mu0, max(y1)*0.77, '$H_0$', fontsize=14,
+         ha='center', fontweight='bold')
+plt.text(mu1, max(y1)*0.77, '$H_1$', fontsize=14,
+         ha='center', fontweight='bold')
 
 # the critical value threshold
 plt.axvline(z_critical, color='gray', linestyle='--', lw=1.5)
@@ -64,9 +66,11 @@ plt.axvline(z_critical, color='gray', linestyle='--', lw=1.5)
 
 # False Positive (alpha) - under H0, right to z
 x_alpha = np.linspace(z_critical, x[-1], 100)
-plt.fill_between(x_alpha, norm.pdf(x_alpha, mu0, sigma), color='red', alpha=0.3, hatch='//', label='False Positive (α)')
+plt.fill_between(x_alpha, norm.pdf(x_alpha, mu0, sigma),
+                 color='red', alpha=0.3, hatch='//', label='False Positive (α)')
 x_alpha = np.linspace(x[0], 0-z_critical, 100)
-plt.fill_between(x_alpha, norm.pdf(x_alpha, mu0, sigma), color='red', alpha=0.3, hatch='//',)
+plt.fill_between(x_alpha, norm.pdf(x_alpha, mu0, sigma),
+                 color='red', alpha=0.3, hatch='//',)
 
 # False Negative (beta) - under H1, left to z
 x_beta = np.linspace(x[0], z_critical, 100)
@@ -109,7 +113,7 @@ plt.annotate('', xy=(z_critical+0.001, y_pos), xytext=(z_critical+dist, y_pos),
              color='#555555')
 plt.text(z_critical+dist, y_pos,
          r'$Reject\ H_0$',
-         ha='left', #va='bottom',
+         ha='left',  # va='bottom',
          fontweight='bold',)
 
 # Fail to reject H0
@@ -118,7 +122,7 @@ plt.annotate('', xy=(z_critical-0.001, y_pos), xytext=(z_critical-dist, y_pos),
              color='#555555')
 plt.text(z_critical-dist, y_pos,
          r'$Fail\ to\ reject\ H_0$',
-         ha='right', #va='bottom',
+         ha='right',  # va='bottom',
          fontweight='bold',)
 
 # axes format
@@ -159,7 +163,5 @@ for (row, col), cell in the_table.get_celld().items():
 the_table.auto_set_font_size(False)
 the_table.set_fontsize(10)
 
-# plt.savefig("power_analysis_plot.svg", format="svg", bbox_inches='tight')
+# plt.savefig("viz/plot.svg", format="svg", bbox_inches='tight')
 plt.show()
-
-
